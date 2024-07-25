@@ -2,12 +2,21 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import { App } from '../App'
 import { MainPage } from '../pages/MainPage'
 import { LoginPage } from '../pages/LoginPage'
+import { PrivateRoute } from '../components/PrivateRoute'
+import { NotFoundPage } from '../pages/NotFoundPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="/" index element={<MainPage />} />
-      <Route path='/login' element={<LoginPage />} />
+      {/* Private Route */}
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/" index element={<MainPage />} />
+      </Route>
+
+      <Route path="/login" element={<LoginPage />} />
+
+      {/* Not Found Path */}
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
   )
 )
