@@ -12,7 +12,7 @@ const homeApi = apiSlice.injectEndpoints({
   }),
 })
 
-export const { useGetUserQuery } = homeApi
+export const { useGetUserQuery, useLazyGetUserQuery } = homeApi
 
 interface IHomeResponse {
   status: string

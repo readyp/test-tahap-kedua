@@ -1,6 +1,7 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query'
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { RootState } from '../store'
+import { delayFn } from '../../utils/delay-fn'
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_URL,
@@ -12,6 +13,10 @@ const baseQuery = fetchBaseQuery({
     }
 
     return headers
+  },
+  fetchFn: async (...args) => {
+    import.meta.env.DEV && await delayFn(5000)
+    return fetch(...args)
   },
 })
 

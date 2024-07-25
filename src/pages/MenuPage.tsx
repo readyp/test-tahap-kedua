@@ -1,17 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Footer } from '../components/Footer'
 import { useGetMenuQuery } from '../store/api/menu-api'
 import { MenuItem } from '../components/MenuItem'
+import { MenuPageSkeleton } from '../components/skeletons/MenuPageSkeleton'
+import { useLazyGetUserQuery } from '../store/api/home-api'
 
 type MenuPageProps = Record<string, never>
 
 const MenuPage: React.FC<MenuPageProps> = () => {
   const { data: menuData, isLoading } = useGetMenuQuery()
+  const [triggerUser] = useLazyGetUserQuery()
   const [active, setActive] = useState(0)
   const [kategori, setKategori] = useState('Seasonal menu')
 
+  useEffect(() => {
+    // prefecth User
+    triggerUser(undefined, true)
+  }, [triggerUser])
+
   return isLoading ? (
-    <p>Loaidng</p>
+    <MenuPageSkeleton />
   ) : menuData ? (
     <div className="flex h-screen flex-col justify-between bg-slate-100 scroll-smooth">
       {/* Header */}
