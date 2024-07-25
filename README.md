@@ -16,3 +16,9 @@ Cara menjalankan aplikasinya:
 - Static Web
 
 &ensp;&ensp;&ensp;&ensp;[Coffee App](https://coffee-app-dev.surge.sh/)
+
+- Docker
+
+```sh
+  docker-compose up --build
+```
