@@ -4,6 +4,7 @@ import { MainPage } from '../pages/MainPage'
 import { LoginPage } from '../pages/LoginPage'
 import { PrivateRoute } from '../components/PrivateRoute'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import { MenuPage } from '../pages/MenuPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -11,6 +12,7 @@ const router = createBrowserRouter(
       {/* Private Route */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/" index element={<MainPage />} />
+        <Route path="/menu" element={<MenuPage />} />
       </Route>
 
       <Route path="/login" element={<LoginPage />} />
