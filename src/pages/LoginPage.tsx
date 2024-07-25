@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa6'
 import { useLoginMutation } from '../store/api/auth-api'
 import { useAuthAction, useAuthSelector } from '../store/slice/auth-slice'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 type LoginPageProps = Record<string, never>
 
@@ -54,6 +55,9 @@ const LoginPage: React.FC<LoginPageProps> = () => {
       setCredential(data)
     } catch (err) {
       console.log(err)
+      toast.error('Credential not valid, please check your email and password again.', {
+        autoClose: 10_000
+      })
     }
   }
 
